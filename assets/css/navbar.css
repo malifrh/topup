@@ -1,0 +1,263 @@
+/* ========================== set navbar =============================== */
+.navbar {
+	justify-items: center;
+	position: unset !important;
+}
+
+.dark-mode .navbar {
+	border: none !important;
+}
+
+.navbar .container {
+	padding: 1rem 0;
+}
+
+.my-brand {
+	font-weight: 300;
+	margin: auto;
+	padding-right: 1rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+
+#search-block {
+	position: absolute;
+	flex-grow: 1;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity var(--my-delay-1) linear;
+}
+
+#search-block form {
+	margin: 0 1rem;
+}
+
+
+.nav-wrapper {
+	min-width: 11rem;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.nav-wrapper>* {
+	margin: 0 1rem;
+}
+
+
+.result-search {
+	position: absolute;
+	top: 45px;
+	z-index: 4;
+	border-radius: 5px;
+	padding: 1rem 0;
+	width: 100%;
+	display: none;
+	background-color: #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+}
+
+.dark-mode .result-search {
+	background: var(--my-dark);
+}
+
+.result-search-item {
+	padding: .1rem .75rem .5rem .75rem;
+	cursor: pointer;
+}
+
+.result-search-item:hover {
+	border-left: 2px solid var(--my-primary);
+}
+
+.dark-mode .result-search-item:hover {
+	background-color: var(--my-dark2);
+}
+
+.result-search-item>*:nth-child(2) {
+	font-size: 11px;
+}
+
+#search-block.active #nav-search {
+	z-index: 4;
+}
+
+#search-block.active #nav-search .result-search {
+	display: block;
+}
+
+
+.menu-control {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	z-index: 1;
+	background-color: inherit;
+}
+
+.menu-control a {
+	color: var(--my-primary);
+	transition: var(--my-delay-1);
+}
+
+.navbar-dark div .menu-control a:hover {
+	color: #fff;
+	text-shadow: 0 0 15px var(--my-primary);
+	text-shadow: 0 0 10px #fff;
+}
+
+.menu-control a span {
+	display: none;
+}
+
+
+/* ========================== set sidebar ============================ */
+.nav-link {
+	padding: 1rem 1rem !important;
+}
+
+.nav-legacy.nav-sidebar>.nav-item>.nav-link.active {
+	background-color: rgba(0, 123, 255, .05) !important;
+	color: rgba(0, 123, 255, 1) !important;
+}
+
+
+
+
+
+/* ===================== @media min width ========================= */
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+
+	/* besar */
+	.nav-wrapper>* {
+		display: none;
+	}
+
+	.navbar .container {
+		position: relative;
+	}
+
+	#search-block {
+		position: unset;
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.menu-control {
+		top: 0;
+		right: 0;
+		width: 10rem;
+		height: 70px;
+	}
+
+	.menu-control a.active {
+		padding: 4px 15px;
+		border-radius: 20px;
+		color: #fff;
+		background-color: var(--my-primary);
+	}
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+
+
+
+
+/* ======================  @media max width ========================= */
+
+@media (max-width: 1199.98px) {}
+
+@media (max-width: 991.98px) {
+
+	.sidebar-mini .content-wrapper,
+	.sidebar-mini .main-footer,
+	.sidebar-mini .main-header {
+		margin-left: 0 !important;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+	/* kecil */
+	.menu-control {
+		font-size: 14px;
+		justify-content: space-evenly;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 50px;
+		border-top: 1px solid var(--my-contras-dark);
+	}
+
+	.menu-control a.active {
+		padding: 5px 15px;
+		border-radius: 20px;
+		color: #fff;
+		background-color: var(--my-primary);
+	}
+
+	.menu-control a.active span {
+		display: inline-block;
+	}
+
+	#search-block.active {
+		height: 100vh;
+		top: 0;
+		left: 0;
+		background: var(--bg-blur);
+		width: 100vw;
+		padding-top: 1rem;
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@media (max-width: 575.98px) {}
+
+/* light */
+.form-control-navbar,
+.btn-navbar {
+	background-color: #dadfe4 !important;
+}
+
+.navbar,
+.navbar div .my-brand {
+	color: var(--my-dark);
+}
+
+.navbar .form-control-navbar:focus,
+.navbar .form-control-navbar:focus+.input-group-append .btn-navbar {
+	color: #495057 !important;
+}
+
+
+/* dark */
+.dark-mode .navbar,
+.dark-mode .navbar div .my-brand {
+	color: var(--my-contras-dark);
+}
+
+.navbar-dark .form-control-navbar:focus {
+	color: #000 !important;
+}
+
+.navbar-dark .menu-control a.active {
+	box-shadow: 0 0 13px var(--my-primary), 0 0px 60px var(--my-primary);
+}
+
+.dark-mode .form-control-navbar:focus,
+.dark-mode .form-control-navbar:focus+.input-group-append .btn-navbar {
+	background-color: var(--my-content-focus) !important;
+}
+
+.dark-mode .form-control-navbar,
+.dark-mode .btn-navbar {
+	background-color: var(--my-content) !important;
+}

@@ -1,0 +1,123 @@
+:root {
+	--my-primary: #007bff;
+	--my-contras-primary: #fff;
+	--my-contras-dark: #c4c8cb;
+	--my-muted: #aaabae;
+
+
+	--my-dark: #0e213c;
+	--my-dark2: #06152b;
+	--my-dark3: #6c757d;
+
+	--my-light: #fff;
+
+
+	--bg-blur: #00000075;
+
+	--my-content: #476289;
+	--my-content-focus: #e6efff;
+
+	--my-delay-1: .3s;
+	--my-delay-2: .17s;
+	--my-rounded-1: .8rem;
+	--my-rounded-2: .3rem;
+}
+
+.content-wrapper {
+	background-color: inherit !important;
+}
+
+
+/* text color */
+.text-default,
+body {
+	color: var(--my-contras-primary);
+}
+
+.card-title {
+	text-transform: capitalize;
+}
+
+.bg-my-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.my-profile-full {
+	border-radius: 50%;
+	width: 100%;
+	aspect-ratio: 1;
+}
+
+.bg-my-dark {
+	background-color: var(--my-dark) !important;
+}
+
+.bg-my-dark2 {
+	background-color: var(--my-dark2) !important;
+}
+
+.bg-my-primary {
+	background-color: var(--my-primary) !important;
+}
+
+
+/* button */
+.my-btn-primary {
+	background-color: var(--my-primary) !important;
+	color: #fff !important;
+}
+
+.my-btn-outline-primary {
+	color: var(--primary);
+	border-color: var(--primary);
+}
+
+.my-btn-outline-primary:hover,
+.my-btn-primary:hover {
+	color: var(--contras-primary);
+	background-color: var(--primary);
+	box-shadow: 0 0 8px var(--my-primary), 0 0px 12px var(--my-primary);
+}
+
+
+.my-dropdown {
+	z-index: 4;
+	display: none;
+	min-width: 300px;
+	position: absolute;
+	padding: 1rem;
+	border-radius: var(--my-rounded-2);
+	transition: var(--my-delay-1);
+}
+
+#global-background-dark {
+	display: none;
+}
+
+#global-background-dark.active {
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(0, 0, 0, .6);
+	position: absolute;
+	z-index: 3;
+	display: block;
+	margin: 0;
+	transition: var(--my-delay-1);
+}
+
+.dark-mode nav,
+.dark-mode .card,
+.dark-mode footer {
+	background-color: var(--my-dark2) !important;
+}
+
+.dark-mode .content-wrapper,
+.dark-mode .my-dropdown {
+	background-color: var(--my-dark) !important;
+}
+
+.my-dropdown {
+	background-color: #fff !important;
+}

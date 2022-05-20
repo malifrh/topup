@@ -1,0 +1,142 @@
+.section {
+	padding-bottom: 3rem;
+}
+
+.section-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.section-header .section-title,
+.text-title {
+	text-transform: uppercase;
+	font-size: 23px;
+	display: flex;
+}
+
+.section-header .section-title .section-title-text {
+	padding: .5rem 0;
+}
+
+.section-header .section-title .lamp {
+	width: 2.8px;
+	border-radius: 3px;
+	background-color: var(--primary);
+	margin-right: 12px;
+}
+
+.dark-mode .section-header .section-title .lamp {
+	box-shadow: 3px 0 12px 0 var(--primary);
+}
+
+.section-header .section-option {
+	display: flex;
+	gap: 1rem;
+	color: var(--my-muted);
+}
+
+.dark-mode .section-header .section-option .active,
+.dark-mode .text-glow-primary {
+	color: #fff;
+	text-shadow: 0 0 5px var(--primary), 0 0 5px var(--primary);
+}
+
+.section-content,
+.section-footer {
+	padding-top: .7rem;
+}
+
+.section-footer {
+	display: flex;
+}
+
+
+.game-box {
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--my-rounded-1);
+	margin-bottom: 1rem;
+	transition: var(--my-delay-2);
+	color: inherit;
+}
+
+.game-box:hover {
+	margin-top: -5px;
+}
+
+.game-box .game-img {
+	aspect-ratio: 1;
+	border-radius: var(--my-rounded-1);
+	flex-grow: 1;
+}
+
+.dark-mode .game-box .game-img {
+	aspect-ratio: 10/8;
+}
+
+.dark-mode .game-box .game-img {
+	border-radius: var(--my-rounded-1) var(--my-rounded-1) 0 0;
+}
+
+.dark-mode .game-box {
+	background-color: var(--my-dark2);
+	color: var(--my-contras-primary);
+}
+
+.game-box .game-title {
+	padding: 0.3rem;
+}
+
+.dark-mode .game-box .game-title {
+	padding: 0.7rem 1rem;
+}
+
+.game-box .game-title div {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.login-box {
+	margin-top: 5rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+footer * a {
+	color: var(--contras-dark);
+}
+
+/* ===================== @media min width ========================= */
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+	.section-header {
+		align-items: flex-end;
+	}
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+
+
+/* ======================  @media max width ========================= */
+
+@media (max-width: 1199.98px) {}
+
+@media (max-width: 991.98px) {}
+
+@media (max-width: 767.98px) {
+	.section-header {
+		flex-direction: column;
+		gap: .25rem;
+	}
+}
+
+@media (max-width: 575.98px) {}
