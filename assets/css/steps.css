@@ -1,0 +1,150 @@
+/* Base */
+  
+  .ftco-blocks-cover-1 {
+    position: relative; }
+    .ftco-blocks-cover-1 .ftco-service-image-1 {
+      margin-top: -70px;
+      position: static; }
+  
+  .ftco-cover-1 {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; }
+    .ftco-cover-1, .ftco-cover-1 .container > .row {
+      height: 100vh;
+      min-height: 900px; }
+    .ftco-cover-1.innerpage, .ftco-cover-1.innerpage .container > .row {
+      height: 90vh;
+      min-height: 700px; }
+    .ftco-cover-1 > .container {
+      position: relative; }
+    .ftco-cover-1.overlay {
+      position: relative; }
+      .ftco-cover-1.overlay:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .5;
+        background: #000; }
+      .ftco-cover-1.overlay h1 {
+        color: #fff;
+        font-size: 3rem; }
+      .ftco-cover-1.overlay p {
+        color: #fff; }
+        .ftco-cover-1.overlay p a {
+          color: #fff;
+          font-weight: 700; }
+          .ftco-cover-1.overlay p a:hover {
+            text-decoration: none; }
+      .ftco-cover-1.overlay form .form-control,
+      .ftco-cover-1.overlay form .btn {
+        height: 55px;
+        border-radius: 4px; }
+      .ftco-cover-1.overlay form .form-control {
+        padding-left: 20px;
+        padding-right: 20px;
+        border-color: transparent;
+        margin-right: 10px; }
+      .ftco-cover-1.overlay form .btn {
+        border-color: transparent; }
+  
+  .form-steps {
+      display: block;
+      width: 100%;
+      position: relative;
+      margin: 40px 0;
+  }
+  
+  .form-steps:after {
+          content: "";
+          display: table;
+          clear: both;
+  }
+  
+  .form-steps__item {
+          padding: 0;
+          position: relative;
+          display: block;
+          float: left;
+          width: 15%;
+          text-align: center;
+  }
+  
+  .form-steps__item-content {
+          display: inline-block;
+  }
+  
+  .form-steps__item-icon {
+          background: lightgray;
+          color: lightslategray;
+          display: block;
+          border-radius: 100%;
+          text-align: center;
+          width: 60px;
+          height: 60px;
+          line-height: 55px;
+          margin: 0 auto 10px auto;
+          position: relative;
+          font-size: 18px;
+          font-weight: 700;
+          z-index: 2;
+          border: 5px solid;
+  }
+  
+  .form-steps__item-text {
+          font-size: 13px;
+          color: lightslategray;
+          font-weight: 500;
+  }
+  
+  .form-steps__item-line {
+          display: inline-block;
+          height: 3px;
+          width: 100%;
+          background: lightgray;
+          float: left;
+          position: absolute;
+          left: -50%;
+          top: 25px;
+          z-index: 1;
+          border: 5px solid lightslategray;
+  }
+  
+  .form-steps__item--active .form-steps__item-icon {
+          background: green;
+          color: white;
+          border-color: mediumseagreen;
+  }
+  
+  
+  .form-steps__item--active .form-steps__item-text {
+          color: green;
+          font-weight: 600;
+  }
+  
+  .form-steps__item--active .form-steps__item-line,
+  .form-steps__item--completed .form-steps__item-line {
+          background: green;
+          border: 5px solid mediumseagreen;
+  }
+  
+  .form-steps__item--completed .form-steps__item-text {
+          color: #4f5e77;
+  }
+  
+  .form-steps__item--completed .form-steps__item-icon {
+      background: green;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDkuMTIgNyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuMTIgMS4wNkw4LjA2IDAgMy4xOCA0Ljg4IDEuMDYgMi43NiAwIDMuODIgMy4xOCA3bDUuOTQtNS45NHoiLz48L3N2Zz4=);
+    color: transparent;
+    background-size: 10px;
+    background-repeat: no-repeat;
+      background-position: center center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 5px solid mediumseagreen;
+  }
+  
