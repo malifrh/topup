@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/navbar.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/sab.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/steps.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -74,7 +74,7 @@
         <nav class="main-header navbar navbar-expand">
             <div class="container" style="background-color: inherit">
                 <div class="d-flex" style="width: 160px">
-                    <a href="https://demo.apivouchergame.com" class="my-brand">LOGO APP</a>
+                    <a href="#" class="my-brand">LOGO</a>
                 </div>
                 <div id="search-block">
                     <form>
@@ -109,7 +109,7 @@
                     <div class="d-inline-block">
                         <div class="my-btn-dropdown" style="cursor: pointer">
                             <i class="bi bi-person"></i>
-                            <span>Dwiki</span>
+                            <span>Admin</span>
                         </div>
                         <div class="my-dropdown" style="top: 55px; right: 15px;">
                             <div class="row">
@@ -117,16 +117,16 @@
                                     <div class="bg-my-image my-profile-full" style="background-image: url('/adminlte/images/default_profile/1.jpg')"></div>
                                 </div>
                                 <div class="col-8">
-                                    <div>Dwiki</div>
-                                    <div>myemail.com</div>
+                                    <div>Admin</div>
+                                    <div>admin@admin.com</div>
                                 </div>
                                 <div class="col-1">
-                                    <a href="https://demo.apivouchergame.com/profile" style="margin-left: -10px;">
+                                    <a href="#" style="margin-left: -10px;">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                 </div>
                             </div>
-                            <a class="btn btn-block btn-outline-danger mt-3" href="https://demo.apivouchergame.com/auth/login">Logout</a>
+                            <a class="btn btn-block btn-outline-danger mt-3" href="#">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -159,108 +159,36 @@
                         <div class="form-steps__item form-steps__item--active">
                             <div class="form-steps__item-content">
                                 <span class="form-steps__item-icon"></span>
-                                <span class="form-steps__item-text">Daftar Hibah</span>
+                                <span class="form-steps__item-text">Daftar</span>
                             </div>
                         </div>
                         <div class="form-steps__item form-steps__item--active">
                             <div class="form-steps__item-content">
                                 <span class="form-steps__item-icon"></span>
                                 <span class="form-steps__item-line"></span>
-                                <span class="form-steps__item-text">Proses seleksi</span>
+                                <span class="form-steps__item-text">Proses</span>
                             </div>
                         </div>
                         <div class="form-steps__item form-steps__item--active">
                             <div class="form-steps__item-content">
                                 <span class="form-steps__item-icon"></span>
                                 <span class="form-steps__item-line"></span>
-                                <span class="form-steps__item-text">Hibah disetujui</span>
+                                <span class="form-steps__item-text">disetujui</span>
                             </div>
                         </div>
                         <div class="form-steps__item form-steps__item--active">
                             <div class="form-steps__item-content">
                                 <span class="form-steps__item-icon"></span>
                                 <span class="form-steps__item-line"></span>
-                                <span class="form-steps__item-text">Hibah berjalan</span>
+                                <span class="form-steps__item-text">berjalan</span>
                             </div>
                         </div>
                         <div class="form-steps__item form-steps__item--active">
                             <div class="form-steps__item-content">
                                 <span class="form-steps__item-icon"></span>
                                 <span class="form-steps__item-line"></span>
-                                <span class="form-steps__item-text">Mengirimkan laporan</span>
+                                <span class="form-steps__item-text">laporan</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="container section pb-3">
-                <div class="section-header">
-                    <div class="section-title">
-                        <span class="lamp"></span>
-                        <div class="section-title-text">trending</div>
-                    </div>
-                </div>
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -268,82 +196,18 @@
             <section class="container section">
                 <div class="section-header">
                     <div class="section-title">
-                        <span class="lamp"></span>
-                        <div class="section-title-text">layanan service</div>
-                    </div>
-                </div>
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="section-title-text">
+                            <<button class="btn-sm btn-primary" type="button" aria-selected="true"><small>Tersedia Voucher</small></button>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-footer justify-content-center">
-                    <a href="" class="text-glow-primary" style="border-radius: 20px;"><u>Tampilkan Semua</u></a>
-                </div>
-            </section>
-            <section class="container section">
-                <div class="section-header">
-                    <div class="section-title">
-                        <span class="lamp"></span>
-                        <div class="section-title-text">voucher</div>
                     </div>
                 </div>
                 <div class="section-content">
                     <div class="row">
                         <?php foreach ($data as $result) { ?>
                             <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                                <a href="https://demo.apivouchergame.com/product/id" class="game-box">
+                                <a href="/product/id" class="game-box">
                                     <!-- <div class="game-img"><img src="<?= $result['url_image'] ?>" style="width:100%;" alt=""></div> -->
-                                    <img src="<?= $result['url_image'] ?>" alt="" class="game-img" height="180" width="180" style="height: auto; background-color:grey;">
+                                    <img src="<?= $result['url_image'] ?>" alt="" class="game-img" height="175" width="175" style="height: 105px; background-color:grey;">
                                     <div class="game-title">
                                         <div>
                                             <?= $result['name'] ?>
@@ -352,76 +216,6 @@
                                 </a>
                             </div>
                         <?php } ?>
-                        <!-- <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
-                            <a href="https://demo.apivouchergame.com/product/id" class="game-box">
-                                <div class="game-img" style="background-color: gray;"></div>
-                                <div class="game-title">
-                                    <div>
-                                        Title Game aaaaaaaaaaaaaaaaaaaaaaaaaa
-                                    </div>
-                                </div>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </section>
