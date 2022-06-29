@@ -2,14 +2,31 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Top Navigation</title>
 
+    <meta charset="utf-8">
+    <meta name="author" content="templatemo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title><?= @$title; ?></title>
+
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/steps.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/sweetalert2/dist/sweetalert2.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/fontawesome.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/templatemo-liberty-market.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/owl.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,7 +38,6 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
     <link rel="stylesheet" src="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css">
 
@@ -31,8 +47,6 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
     <!-- jQuery -->
@@ -51,11 +65,10 @@
     <link rel="stylesheet" src="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
 
-    <!-- Fonts and icons -->
-    <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
-
     <!-- CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="<?= base_url() ?>assets/sweetalert2/dist/sweetalert2.min.js"></script>
+
     <style>
         .radio-card label {
             padding: 0.7rem 1.2rem;
@@ -146,4 +159,5 @@
             }
         }
     </style>
+
 </head>

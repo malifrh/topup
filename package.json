@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sweetalert2": "^11.4.18",
+    "validate.js": "^0.13.1"
+  }
+}
