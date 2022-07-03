@@ -18,13 +18,13 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/main.css">
 
     <div class="limiter">
-        <div class="container-login100" style="background-image: url(<?= base_url() ?>);">
+        <div class="container-login100" style="background-image: url(<?= site_url() ?>);">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
                     Register
                 </span>
                 <?= $this->session->flashdata('pesan') ?>
-                <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="<?= base_url('register/index') ?>" class="user">
+                <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="<?= site_url('register/index') ?>" class="user">
 
                     <div class="wrap-input100 validate-input" data-validate="Silahkan masukkan email anda">
                         <input class="input100" type="email" name="email" placeholder="Masukkan Email">
@@ -55,7 +55,7 @@
                     </div>
                     <br>
                     <div class="text-center">
-                        <a class="small" href="<?= base_url('auth/login') ?>" style="color: #000e24;">Already have an account? Login!</a>
+                        <a class="small" href="<?= site_url('auth/login') ?>" style="color: #000e24;">Already have an account? Login!</a>
                     </div>
                 </form>
             </div>
