@@ -1,31 +1,3 @@
-<!-- <body class="hold-transition layout-top-nav dark-mode">
-    <div id="global-background-dark"></div>
-    <div class="wrapper">
-        <nav class="main-header navbar navbar-expand">
-            <div class="container" style="background-color: inherit">
-                <div class="d-flex" style="width: 160px">
-                    <a href="#" class="my-brand">LOGO</a>
-                </div>
-                <div class="nav-wrapper">
-                    <div class="d-inline-block">
-                        <div class="my-btn-dropdown" style="cursor: pointer">
-                            <i class="bi bi-person"></i>
-                            <span>Admin</span>
-                        </div>
-                        <div class="my-dropdown" style="top: 55px; right: 15px;">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div>Admin</div>
-                                    <div>admin@admin.com</div>
-                                </div>
-                            </div>
-                            <a class="btn btn-block btn-outline-danger mt-3" href="#">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav> -->
-
 <body>
 
     <!-- ***** Preloader Start ***** -->
@@ -48,16 +20,39 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="<?= base_url() ?>" class="logo">
                             <img src="assets/images/logo.png" alt="">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="explore.html">Check Invoice</a></li>
-                            <!-- <li><a href="details.html">History</a></li> -->
-                            <li><a href="author.html">Login</a></li>
+
+                            <li><a href="<?= base_url() ?>" class="<?php if ($this->uri->uri_string() == '') {
+                                                                        echo 'active';
+                                                                    } ?>">Home</a></li>
+                            <li><a href="<?= base_url('invoice') ?>" class="<?php if ($this->uri->uri_string() == 'invoice') {
+                                                                                echo 'active';
+                                                                            } ?>">Check Invoice</a></li>
+
+                            <?php
+                            if ($this->session->userdata('email')) {
+                            ?>
+                                <li><a href="<?= base_url('history') ?>" class="<?php if ($this->uri->uri_string() == 'history') {
+                                                                                    echo 'active';
+                                                                                } ?>">Riwayat Transaksi</a></li>
+                                <li style="margin-top: 6px;">
+                                    <div class="my-btn-dropdown" style="cursor: pointer">
+                                        <i class="bi bi-person"></i>
+                                        <span><?= $this->session->userdata('email') ?> </span>
+
+                                    </div>
+                                    <div class="my-dropdown" style="top: 55px; right: 15px;">
+                                        <a class="btn btn-block btn-outline-danger" href="<?= base_url('auth/logout') ?>">Logout</a>
+                                    </div>
+                                </li>
+                            <?php } else { ?>
+                                <li><a href="<?= base_url('auth/login') ?>">Login</a></li>
+                            <?php } ?>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

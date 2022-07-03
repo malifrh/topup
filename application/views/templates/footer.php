@@ -1,4 +1,3 @@
-<script src="<?= base_url() ?>assets/admin/plugins/jquery/jquery.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url() ?>assets/admin/dist/js/adminlte.min.js"></script>
 <script>
@@ -30,7 +29,6 @@
 
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
-<script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <script src="<?= base_url() ?>assets/js/isotope.min.js"></script>

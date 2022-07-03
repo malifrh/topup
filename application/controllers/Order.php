@@ -54,8 +54,6 @@ class Order extends CI_Controller
             'title' => $title
         );
 
-        // var_dump($result['data']);
-        // die;
         $this->load->view('templates/wrapper', $result);
     }
 
@@ -67,8 +65,10 @@ class Order extends CI_Controller
         $id_player = $this->input->post('id_player');
         $server = $this->input->post('server');
         $kode_voucher = $this->input->post('kode_voucher');
+        $key = $this->input->post('key');
+        $id_user = $this->session->userdata('id_user');
 
-        $invoice = 'INV-' . uniqid();
+        $invoice = 'INV' . rand();
         $order_id = 'ORDER-' . uniqid();
 
         $transaction_details = array(
@@ -93,7 +93,7 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
             );
@@ -109,7 +109,7 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
             );
@@ -121,7 +121,7 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
             );
@@ -140,7 +140,7 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
             );
@@ -156,7 +156,7 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
             );
@@ -168,14 +168,12 @@ class Order extends CI_Controller
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
                     'order_time' => date('Y-m-d H:i:s') . ' +0700',
-                    'expiry_duration' => 10,
+                    'expiry_duration' => 60,
                     'unit' => 'minute'
                 ),
             );
         }
 
-        // var_dump($transaction_data);
-        // die;
         $params = array('server_key' => 'SB-Mid-server-dyT-ryGH1MDVgI79u6lD6aG6', 'production' => false);
         $this->load->library('veritrans', $params);
         $response = null;
@@ -194,6 +192,8 @@ class Order extends CI_Controller
                 echo json_encode($response);
             } else {
                 $response->type_payment = $pembayaran;
+                $response->batas_pembayaran = date('Y-m-d H:i:s', strtotime('1 hour'));
+                $response->invoice = $invoice;
                 echo json_encode($response);
             }
         }
@@ -202,8 +202,9 @@ class Order extends CI_Controller
 
         $dataInsert = array(
             'id_order' => $order_id,
-            'id_user'  => null,
+            'id_user'  => @$id_user,
             'id_player' => $id_player,
+            'invoice'   => $invoice,
             'voucher_game' => $game,
             'server_player' => $server,
             'kode_diamond'  => $kode_voucher,
@@ -218,10 +219,11 @@ class Order extends CI_Controller
             'qr_code'               => null,
             'redirect_qrcode'       => null,
             'voucher_status'        => null,
-            'create_date'           => date('Y-m-d H:i:s')
+            'index_item'            => $key,
+            'create_date'           => date('Y-m-d H:i:s'),
+            'batas_pembayaran'      => date('Y-m-d H:i:s', strtotime('1 hour'))
         );
 
-        // var_dump($dataInsert);
         $this->db->insert('t_transaksi', $dataInsert);
     }
 
@@ -229,67 +231,58 @@ class Order extends CI_Controller
     {
         $status = true;
         $data = [];
-        $item = $this->input->post('item');
         $slug = $this->input->post('slug');
         $key = $this->input->post('key');
         $this->_validate();
-        // die();
 
         $url = 'https://apivouchergame.com/api/product/' . $slug . '';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
-        // $url = 'https://apivouchergame.com/api/sandbox/product/' . $slug . '' . "/" . '' . $item . '';
-        // $ch = curl_init($url);
-        // curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
-        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_POST, true);
-        // curl_setopt($ch, CURLOPT_XOAUTH2_BEARER, "93|VHb6ulLg8EvrlxrNAZUsujtTkTb5RTRH5OmNjhNU");
-        // $response = curl_exec($ch);
 
         $data = json_decode($response, true);
-        // var_dump($data);
 
         $result = $data;
-        // var_dump($result);
-        // var_dump($result);
-        // var_dump($responses);
-        // die();
 
 
-        // $post = array(
-        //     'uid' => $this->input->post('id_player'),
-        //     'zid' => $this->input->post('server')
-        // );
+        $post = array(
+            'uid' => $this->input->post('id_player'),
+            'zid' => $this->input->post('server')
+        );
 
-        // $urls = 'https://apivouchergame.com/api/checkGameId/mobile-legend';
-        // $chs = curl_init($urls);
-        // curl_setopt($chs, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-        // curl_setopt($chs, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($chs, CURLOPT_CUSTOMREQUEST, "POST");
-        // curl_setopt($chs, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
-        // curl_setopt($chs, CURLOPT_POSTFIELDS, $post);
-        // $responses = curl_exec($chs);
-        // // var_dump($result);
-        // $datas = json_decode($responses, true);
-        // var_dump($datas);
-        // die();
-        // var_dump($this->db->last_query());die();
+        $urls = 'https://apivouchergame.com/api/check-game-id/mobile-legend';
+        $chs = curl_init($urls);
+        curl_setopt($chs, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+        curl_setopt($chs, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($chs, CURLOPT_POST, true);
+        curl_setopt($chs, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
+        curl_setopt($chs, CURLOPT_POSTFIELDS, json_encode($post));
+        $responses = curl_exec($chs);
+        $datas = json_decode($responses, true);
 
-        if ($result) {
-            // $undangan_test->tanggal_pelaksanaan_ujian = date('d-m-Y', strtotime($undangan_test->tanggal_pelaksanaan_ujian));
-            // $undangan_test->program_pelatihan = $undangan_test->nama_pelatihan;
-            $result['harga'] = $data['data']['denominations'][$key]['price'];
-            $result['game'] = $slug;
-            $data = $result;
+        if ($slug == 'mobile-legend') {
+            if ($datas['result'] != '') {
+                $result['harga'] = $data['data']['denominations'][$key]['price'];
+                $result['game'] = $slug;
+                $result['username'] = $datas['result'];
+                $result['uid'] = $this->input->post('id_player');
+                $result['zid'] = $this->input->post('server');
+                $data = $result;
+            } else {
+                $status = false;
+            }
         } else {
-            $status = false;
+            if ($result) {
+                $result['harga'] = $data['data']['denominations'][$key]['price'];
+                $result['game'] = $slug;
+                $result['uid'] = $this->input->post('id_player');
+                $data = $result;
+            } else {
+                $status = false;
+            }
         }
+
 
         echo json_encode(['status' => $status, 'data' => $data]);
     }

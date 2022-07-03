@@ -31,7 +31,8 @@ class Welcome extends CI_Controller
 
 		$result = array(
 			'isi'   => 'user/index',
-			'data'	=> $data['data']['service']
+			'data'	=> $data['data']['service'],
+			'title'	=> 'Topup'
 		);
 		$this->load->view('templates/wrapper', $result);
 	}

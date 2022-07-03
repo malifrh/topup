@@ -126,6 +126,10 @@
     var payment = document.getElementsByName("payment");
     var item = document.getElementsByName("item");
 
+    function refresh_page() {
+        location.reload();
+    }
+
     function lanjut() {
         var pembayaran = $('#pembayaran_hide').val();
         var harga = $('#harga_hide').val();
@@ -133,6 +137,7 @@
         var id_player = $('#id_player').val();
         var server = $('#server').val();
         var kode_voucher_hide = $('#kode_voucher_hide').val();
+        var index_item_hide = $('#index_item_hide').val();
         var va_number;
         var payment;
 
@@ -149,12 +154,45 @@
                 game: game,
                 id_player: id_player,
                 server: server,
-                kode_voucher: kode_voucher_hide
+                kode_voucher: kode_voucher_hide,
+                key: index_item_hide
             },
 
             success: function(data) {
                 $('#modalinfo').modal('hide');
-                var parse = JSON.parse(data)
+                var parse = JSON.parse(data);
+
+                // Set the date we're counting down to
+                var limit = parse.batas_pembayaran;
+                var countDownDate = new Date(limit).getTime();
+
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+
+                    // Get today's date and time
+                    var now = new Date().getTime();
+
+                    // Find the distance between now and the count down date
+                    var distance = countDownDate - now;
+
+                    // Time calculations for days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // nampilin counting down
+                    document.getElementById("batas_pembayaran").innerHTML = hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
+
+                    // jika counting down abis reload ke url(ordercancel)
+                    if (distance < 0) {
+                        clearInterval(x);
+                        document.getElementById("batas_pembayaran").innerHTML = "Status: Gagal Pembayaran";
+                    }
+                }, 1000);
+
+                $('#invoice').html(parse.invoice);
+                $('#invoice_hide').val(parse.invoice);
 
                 if (parse.type_payment == 'bca' || parse.type_payment == 'bri' || parse.type_payment == 'bni') {
                     va_number = parse.va_numbers[0].va_number
@@ -233,8 +271,6 @@
                         .then(response => {
                             if (response.status === true) {
 
-                                // console.log(response.data);
-
                                 var price = formatRupiah(response.data.harga, 'Rp. ')
                                 console.log(price);
 
@@ -242,7 +278,9 @@
                                 $('#harga_hide').val(response.data.harga);
                                 $('#game_hide').val(response.data.game);
                                 $('#kode_voucher_hide').val(item[i].value);
-                                $('#game').html(response.data.game);
+                                $('#index_item_hide').val(i);
+                                $('#username').html(response.data.username);
+                                $('#id_server').html(response.data.uid + " (" + response.data.zid + ")");
 
                                 if (!$("input[name='payment']:checked").val()) {
                                     Swal.fire({
@@ -268,7 +306,7 @@
                                 Swal.fire({
                                     type: "warning",
                                     title: 'Gagal!',
-                                    text: 'Data tidak ditemukan, silahkan masukkan ID Player / Server terlebih dahulu.',
+                                    text: 'Data tidak ditemukan, silahkan masukkan ID Player / Server yang sesuai.',
                                     confirmButtonClass: 'btn btn-warning',
                                 });
 

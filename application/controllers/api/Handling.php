@@ -27,7 +27,7 @@ class Handling extends REST_Controller
                 'zid'   => $getAPIVOUCHERGAME->server_player
             );
 
-            $url = 'https://apivouchergame.com/api/production/product/' . $slug . '' . "/" . '' . $item . '';
+            $url = 'https://apivouchergame.com/api/sandbox/product/' . $slug . '' . "/" . '' . $item . '';
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -35,8 +35,6 @@ class Handling extends REST_Controller
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', $this->authorization));
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
             $response = curl_exec($ch);
-            // var_dump(json_encode($post));
-            // die;
 
             $data = json_decode($response, true);
 
@@ -59,8 +57,6 @@ class Handling extends REST_Controller
         $this->db->update('t_transaksi', $updateTransaksi);
 
         echo json_encode(['status' => $status, 'data' => $data, 'response' => $response]);
-        // var_dump($this->db->last_query());
-        // die;
     }
 
     function callbackVoucher_post()
