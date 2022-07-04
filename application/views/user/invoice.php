@@ -91,7 +91,7 @@
                 [10, 25, 50, 100, "All"]
             ],
             ajax: {
-                url: '<?php echo site_url('tables/ajax_list') ?>',
+                url: '<?php echo base_url('tables/ajax_list') ?>',
                 type: 'POST',
                 beforeSend: function() {
                     $("#loading").show();

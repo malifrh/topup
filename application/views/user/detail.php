@@ -145,7 +145,7 @@
         console.log(id_player)
 
         $.ajax({
-            url: '<?= site_url() ?>/order/proses',
+            url: '<?= base_url() ?>/order/proses',
             type: 'POST',
             data: {
                 token_id: Veritrans.client_key,

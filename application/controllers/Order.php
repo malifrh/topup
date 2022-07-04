@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 class Order extends CI_Controller
 {
@@ -68,6 +69,9 @@ class Order extends CI_Controller
         $key = $this->input->post('key');
         $id_user = $this->session->userdata('id_user');
 
+        $time = time();
+        $order_time = date("Y-m-d H:i:s O", $time);
+        $batas = date('Y-m-d H:i:s O', strtotime('1 hour'));
         $invoice = 'INV' . rand();
         $order_id = 'ORDER-' . uniqid();
 
@@ -92,7 +96,7 @@ class Order extends CI_Controller
                 ),
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
@@ -108,7 +112,7 @@ class Order extends CI_Controller
                 ),
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
@@ -120,7 +124,7 @@ class Order extends CI_Controller
                 'transaction_details'   => $transaction_details,
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
@@ -139,7 +143,7 @@ class Order extends CI_Controller
                 ),
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
@@ -155,7 +159,7 @@ class Order extends CI_Controller
                 ),
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 )
@@ -167,7 +171,7 @@ class Order extends CI_Controller
                 'transaction_details'   => $transaction_details,
                 'customer_details'      => $customer_details,
                 'custom_expiry' => array(
-                    'order_time' => date('Y-m-d H:i:s') . ' +0700',
+                    'order_time' => $order_time,
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 ),
@@ -192,7 +196,7 @@ class Order extends CI_Controller
                 echo json_encode($response);
             } else {
                 $response->type_payment = $pembayaran;
-                $response->batas_pembayaran = date('Y-m-d H:i:s', strtotime('1 hour'));
+                $response->batas_pembayaran = $batas;
                 $response->invoice = $invoice;
                 echo json_encode($response);
             }
@@ -220,8 +224,8 @@ class Order extends CI_Controller
             'redirect_qrcode'       => null,
             'voucher_status'        => null,
             'index_item'            => $key,
-            'create_date'           => date('Y-m-d H:i:s'),
-            'batas_pembayaran'      => date('Y-m-d H:i:s', strtotime('1 hour'))
+            'create_date'           => $order_time,
+            'batas_pembayaran'      => $batas
         );
 
         $this->db->insert('t_transaksi', $dataInsert);

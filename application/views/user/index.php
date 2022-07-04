@@ -50,7 +50,7 @@
                                                         Collection:<br><strong>9/9</strong></span>
                                                     <span class="category">Category:<br><strong>Diamond</strong></span>
                                                     <div class="main-button">
-                                                        <a href="<?= site_url('order/voucher/' . $result['slug'] . '') ?>">Order</a>
+                                                        <a href="<?= base_url('order/voucher/' . $result['slug'] . '') ?>">Order</a>
                                                     </div>
                                                 </div>
                                             </div>
