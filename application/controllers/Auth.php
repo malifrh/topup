@@ -16,7 +16,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required', ['required' => 'Password belum ditambahkan!']);
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'title'    => 'Login'
+                'title'    => '| Login'
             );
             $this->load->view('templates/head', $data);
             $this->load->view('user/login');

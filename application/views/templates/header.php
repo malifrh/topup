@@ -20,8 +20,8 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="<?= base_url() ?>" class="logo">
-                            <img src="assets/images/logo.png" alt="">
+                        <a href="<?= base_url('') ?>" class="logo" style="margin-top: -18px; margin-left:20px;">
+                            <img src="<?= base_url('assets/img/logo.png') ?>" alt="" style="width: 105px;">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->

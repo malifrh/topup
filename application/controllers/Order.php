@@ -7,12 +7,29 @@ class Order extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->authorization       = "Authorization: Bearer 120|stNhbJE0tepgFIA7hEuDKz2CpWIBi9Y1l62klcVB";
-        $params = array('server_key' => 'SB-Mid-server-dyT-ryGH1MDVgI79u6lD6aG6', 'production' => false);
+        $this->authorization       = "Authorization: Bearer 152|CcZyE71bF6FeMgoQRWfLcDvHxQ6lsgBjjqCcypGE";
+        $params = array('server_key' => 'SB-Mid-server-61XKaDk0t_7L4SobiTKTOa_O', 'production' => false);
         $this->load->library('veritrans');
         $this->veritrans->config($params);
     }
 
+    public function getHarga()
+    {
+        $slug = $this->input->post('slug');
+        $item = $this->input->post('item');
+
+        $url = 'https://apivouchergame.com/api/product/' . $slug . '';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+
+        $data = json_decode($response, true);
+
+        $result['harga'] = $data['data']['denominations'][$item]['price'];
+
+        echo $result['harga'];
+    }
 
     public function voucher($slug)
     {
@@ -25,31 +42,23 @@ class Order extends CI_Controller
 
         $data = json_decode($response, true);
 
+        // var_dump($data);
+        // die;
+
         $getPayment = $this->db->query('SELECT * FROM t_payment')->result_array();
 
-        if ($slug == 'free-fire' || $slug == 'free-fire-max') {
-            $title = 'FREE FIRE';
-        } else if ($slug == 'mobile-legend') {
-            $title = 'MOBILE LEGEND';
-        } else if ($slug == 'call-of-duty-mobile') {
-            $title = 'CALL OF DUTY';
-        } else if ($slug == 'sausage-man') {
-            $title = 'SAUSAGE MAN';
-        } else if ($slug == 'arena-of-valor') {
-            $title = 'ARENA OF VALOR';
-        } else if ($slug == 'higgs-domino') {
-            $title = 'HIGGS DOMINO';
-        } else if ($slug == 'pubg-mobile') {
-            $title = 'PUBG MOBILE';
-        } else if ($slug == 'ragnarok-x-next-generation') {
-            $title = 'RAGNAROK X: NEXT GENERATION';
-        } else {
-            $title = 'STEAM WALLET';
-        }
+        $this->db->select('*');
+        $this->db->from('t_game');
+        $this->db->where('slug', $slug);
+        $datas = $this->db->get()->row();
+
+        $title = $datas->name;
+
 
         $result = array(
             'isi'   => 'user/detail',
             'data'  => $data['data']['denominations'],
+            // 'url'   => $data['data']['service']['url_image'],
             'payment' => $getPayment,
             'slug'  => $slug,
             'title' => $title
@@ -60,14 +69,16 @@ class Order extends CI_Controller
 
     public function proses()
     {
-        $harga = $this->input->post('harga');
-        $game = $this->input->post('game');
-        $pembayaran = $this->input->post('pembayaran');
-        $id_player = $this->input->post('id_player');
-        $server = $this->input->post('server');
+        $harga        = $this->input->post('harga');
+        $game         = $this->input->post('game');
+        $pembayaran   = $this->input->post('pembayaran');
+        $id_player    = $this->input->post('id_player');
+        $server       = $this->input->post('server');
         $kode_voucher = $this->input->post('kode_voucher');
-        $key = $this->input->post('key');
-        $id_user = $this->session->userdata('id_user');
+        $key          = $this->input->post('key');
+        $contact      = $this->input->post('contact');
+
+        $id_user      = $this->session->userdata('id_user');
 
         $time = time();
         $order_time = date("Y-m-d H:i:s O", $time);
@@ -82,8 +93,8 @@ class Order extends CI_Controller
 
         // Populate customer's Info
         $customer_details = array(
-            'email'                     => "andrisetiawan@me.com",
-            'phone'                     => "0813223118014",
+            'email'                     => "mail@me.com",
+            'phone'                     => @$contact,
         );
 
         if ($pembayaran == 'bca' || $pembayaran == 'bni' || $pembayaran == 'bri') {
@@ -164,7 +175,7 @@ class Order extends CI_Controller
                     'unit' => 'minute'
                 )
             );
-        } else {
+        } else if ($pembayaran == 'gopay') {
             $payment_type = $pembayaran;
             $transaction_data = array(
                 'payment_type'      => $payment_type,
@@ -176,9 +187,24 @@ class Order extends CI_Controller
                     'unit' => 'minute'
                 ),
             );
+        } else {
+            $payment_type = $pembayaran;
+            $transaction_data = array(
+                'payment_type'      => $payment_type,
+                'transaction_details'   => $transaction_details,
+                'customer_details'      => $customer_details,
+                'custom_expiry' => array(
+                    'order_time' => $order_time,
+                    'expiry_duration' => 60,
+                    'unit' => 'minute'
+                ),
+                'shopeepay' => array(
+                    'callback_url' => 'https://midtrans.com/'
+                )
+            );
         }
 
-        $params = array('server_key' => 'SB-Mid-server-dyT-ryGH1MDVgI79u6lD6aG6', 'production' => false);
+        $params = array('server_key' => 'SB-Mid-server-61XKaDk0t_7L4SobiTKTOa_O', 'production' => false);
         $this->load->library('veritrans', $params);
         $response = null;
         try {
@@ -202,33 +228,52 @@ class Order extends CI_Controller
             }
         }
 
+        if ($payment_type == 'permata') {
+            $va_number = $response->permata_va_number;
+        } else if ($payment_type == 'bank_transfer') {
+            $va_number = $response->va_numbers[0]->va_number;
+        }
+
+        if ($payment_type == 'gopay') {
+            $gopayRedirect = @$response->actions[0]->url;
+        }
+
+        if ($payment_type == 'shopeepay') {
+            $shopeepayRedirect = @$response->actions[0]->url;
+        }
+
         $status_transaksi = 'Menunggu Pembayaran';
 
         $dataInsert = array(
-            'id_order' => $order_id,
-            'id_user'  => @$id_user,
-            'id_player' => $id_player,
-            'invoice'   => $invoice,
-            'voucher_game' => $game,
-            'server_player' => $server,
-            'kode_diamond'  => $kode_voucher,
-            'harga'         => $harga,
-            'status_transaksi' => $status_transaksi,
-            'payment_type'  => $payment_type,
-            'pembayaran'    => $pembayaran,
-            'midtrans_status'   => $response->transaction_status,
-            'redeem_code_voucher'   => null,
-            'invoice_voucher'       => null,
-            'va_number'             => @$response->va_numbers[0]->va_number,
-            'qr_code'               => null,
-            'redirect_qrcode'       => null,
-            'voucher_status'        => null,
-            'index_item'            => $key,
-            'create_date'           => $order_time,
-            'batas_pembayaran'      => $batas
+            'id_order'            => $order_id,
+            'id_user'             => @$id_user,
+            'id_player'           => $id_player,
+            'invoice'             => $invoice,
+            'voucher_game'        => $game,
+            'server_player'       => $server,
+            'kode_diamond'        => $kode_voucher,
+            'harga'               => $harga,
+            'status_transaksi'    => $status_transaksi,
+            'payment_type'        => $payment_type,
+            'pembayaran'          => $pembayaran,
+            'midtrans_status'     => $response->transaction_status,
+            'redeem_code_voucher' => null,
+            'invoice_voucher'     => null,
+            'va_number'           => @$va_number,
+            'kode_pembayaran'     => @$response->payment_code,
+            'bill_code'           => @$response->biller_code,
+            'bill_key'            => @$response->bill_key,
+            'deeplink_redirect'   => @$shopeepayRedirect,
+            'qr_code'             => @$gopayRedirect,
+            'redirect_qrcode'     => @$response->actions[1]->url,
+            'voucher_status'      => null,
+            'index_item'          => $key,
+            'create_date'         => $order_time,
+            'batas_pembayaran'    => $batas,
+            'contact'             => @$contact
         );
 
-        $this->db->insert('t_transaksi', $dataInsert);
+        $insert = $this->db->insert('t_transaksi', $dataInsert);
     }
 
     function check()
@@ -250,12 +295,20 @@ class Order extends CI_Controller
         $result = $data;
 
 
-        $post = array(
-            'uid' => $this->input->post('id_player'),
-            'zid' => $this->input->post('server')
-        );
+        if ($slug == 'mobile-legend') {
 
-        $urls = 'https://apivouchergame.com/api/check-game-id/mobile-legend';
+            $post = array(
+                'uid' => $this->input->post('id_player'),
+                'zid' => $this->input->post('server')
+            );
+        } else {
+
+            $post = array(
+                'uid' => $this->input->post('id_player'),
+            );
+        }
+
+        $urls = 'https://apivouchergame.com/api/check-game-id/' . $slug . '';
         $chs = curl_init($urls);
         curl_setopt($chs, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
         curl_setopt($chs, CURLOPT_RETURNTRANSFER, true);
@@ -280,6 +333,7 @@ class Order extends CI_Controller
             if ($result) {
                 $result['harga'] = $data['data']['denominations'][$key]['price'];
                 $result['game'] = $slug;
+                $result['username'] = $datas['result'];
                 $result['uid'] = $this->input->post('id_player');
                 $data = $result;
             } else {

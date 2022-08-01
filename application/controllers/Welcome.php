@@ -21,18 +21,13 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$url = 'https://apivouchergame.com/api/product';
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$response = curl_exec($ch);
 
-		$data = json_decode($response, true);
-
+		$this->db->select('*');
+		$this->db->from('t_game');
+		$data = $this->db->get()->result_array();
 		$result = array(
 			'isi'   => 'user/index',
-			'data'	=> $data['data']['service'],
-			'title'	=> 'Topup'
+			'data'	=> $data,
 		);
 		$this->load->view('templates/wrapper', $result);
 	}

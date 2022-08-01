@@ -9,9 +9,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title><?= @$title; ?></title>
+    <title>Queen Store <?= @$title; ?></title>
 
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/img/logo.png') ?>">
+    <link rel="icon" type="image/png" href="<?= base_url('assets/img/logo.png') ?>">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/navbar.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/steps.css">

@@ -9,7 +9,9 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <div class="my-img-carousel"></div>
+                                    <div class="my-img-carousel"><a target="_blank" rel="noopener noreferrer" href="">
+                                            <img class="img-fluid" style="width:85% !important; " src="">
+                                        </a></div>
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">

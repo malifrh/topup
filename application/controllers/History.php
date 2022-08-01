@@ -8,7 +8,7 @@ class History extends CI_Controller
 
         $data = array(
             'isi'   => 'user/history',
-            'title'    => 'Riwayat Transaksi | Topup'
+            'title'    => '| Riwayat Transaksi'
         );
         $this->load->view('templates/wrapper', $data);
     }

@@ -20,7 +20,7 @@ class Register extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'title'    => 'Register'
+                'title'    => '| Register'
             );
             $this->load->view('templates/head', $data);
             $this->load->view('user/register');

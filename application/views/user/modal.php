@@ -58,8 +58,8 @@
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreate">Info Pendaftar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -72,8 +72,8 @@
                                 <tr>
                                     <td width="20%" class="font-weight-bold">Invoice</td>
                                     <td width="1%">:</td>
-                                    <td width="29%"><span id="invoice"></span></td>
-                                    <input type="hidden" name="invoice_hide" id="invoice_hide">
+                                    <td width="29%"><span id="invoiceVA"></span></td>
+                                    <input type="hidden" name="invoiceVA_hide" id="invoiceVA_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Virtual Account</td>
@@ -90,7 +90,7 @@
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="batas_pembayaran"></span></td>
+                                    <td><span id="batas_pembayaranVA"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -98,7 +98,7 @@
                 </div>
                 <div style="padding-left: 60px;" class="center">
                     <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
@@ -110,8 +110,8 @@
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreate">Info Pendaftar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -124,8 +124,8 @@
                                 <tr>
                                     <td width="20%" class="font-weight-bold">Invoice</td>
                                     <td width="1%">:</td>
-                                    <td width="29%"><span id="invoice"></span></td>
-                                    <input type="hidden" name="invoice_hide" id="invoice_hide">
+                                    <td width="29%"><span id="invoiceBill"></span></td>
+                                    <input type="hidden" name="invoiceBill_hide" id="invoiceBill_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Pembayaran</td>
@@ -149,7 +149,7 @@
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="batas_pembayaran"></span></td>
+                                    <td><span id="batas_pembayaranBill"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -157,7 +157,7 @@
                 </div>
                 <div style="padding-left: 60px;" class="center">
                     <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
@@ -169,8 +169,8 @@
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCreate">Info Pendaftar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -183,8 +183,8 @@
                                 <tr>
                                     <td width="20%" class="font-weight-bold">Invoice</td>
                                     <td width="1%">:</td>
-                                    <td width="29%"><span id="invoice"></span></td>
-                                    <input type="hidden" name="invoice_hide" id="invoice_hide">
+                                    <td width="29%"><span id="invoiceConv"></span></td>
+                                    <input type="hidden" name="invoiceConv_hide" id="invoiceConv_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Kode Pembayaran</td>
@@ -201,7 +201,7 @@
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="batas_pembayaran"></span></td>
+                                    <td><span id="batas_pembayaranConv"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -209,7 +209,7 @@
                 </div>
                 <div style="padding-left: 60px;" class="center">
                     <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -235,14 +235,63 @@
                                 <tr>
                                     <td width="20%" class="font-weight-bold">Invoice</td>
                                     <td width="1%">:</td>
-                                    <td width="29%"><span id="invoice"></span></td>
-                                    <input type="hidden" name="invoice_hide" id="invoice_hide">
+                                    <td width="29%"><span id="invoiceQR"></span></td>
+                                    <input type="hidden" name="invoiceQR_hide" id="invoiceQR_hide">
                                 </tr>
                                 <tr>
-                                    <td class="font-weight-bold">Virtual Account</td>
+                                    <td class="font-weight-bold">Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="va"></span></td>
-                                    <input type="hidden" name="va_hide" id="va_hide">
+                                    <td><span id="pembayaran2s"></span></td>
+                                    <input type="hidden" name="pembayaran2ss_hide" id="pembayaran2ss_hide">
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Batas Pembayaran</td>
+                                    <td>:</td>
+                                    <td><span id="batas_pembayaranQR"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="qr-code">
+                            <span class="font-weight-bold text-center">Silahkan Scan QR</span>
+                        </div>
+                        <div style="border-radius:2px;display:flex;flex-direction:column;align-items:center;background:white">
+                            <a href="" id="url" target="_blank" alt="QR CODE GOPAY">
+                                <img src="" style="width: 100%; height:50%;" id="qr_code" name="qr_code" alt="">
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+                <div style="padding-left: 60px;" class="center">
+                    <div class="modal-footer" id="btn_footer">
+                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_shopee" name="modal_shopee" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+    <div class="modal-dialog modal-xxxl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="container">
+                <div class="modal-body">
+                    <form method="post" id="formbayar" action="#">
+                        <table class="table table-borderless table-sm">
+                            <tbody>
+                                <tr>
+                                    <td width="20%" class="font-weight-bold">Invoice</td>
+                                    <td width="1%">:</td>
+                                    <td width="29%"><span id="invoiceShopee"></span></td>
+                                    <input type="hidden" name="invoiceShopee_hide" id="invoiceShopee_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Pembayaran</td>
@@ -253,75 +302,21 @@
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="batas_pembayaran"></span></td>
+                                    <td><span id="batas_pembayaranShopee"></span></td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <div class="align-center">
-                            <div class="qr-code">
-                                <span class="font-weight-bold text-center">Silahkan Scan QR</span>
-                            </div>
-                            <img src="" style="width: 75%; height:50%;" id="qr_code" name="qr_code" alt="">
+                        <div class="row">
+                            <input type="hidden" name="link_shopee" id="link_shopee">
+                            <button type="button" class="btn btn-primary" onclick="bayarShopee()" data-dismiss="modal">Bayar dengan ShopeePay</button>
                         </div>
 
                     </form>
                 </div>
                 <div style="padding-left: 60px;" class="center">
                     <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="test_modal" name="test_modal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-    <div class="modal-dialog modal-xxxl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCreate">Info Pendaftar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="container">
-                <div class="modal-body">
-                    <form method="post" id="formbayar" action="#">
-                        <table class="table table-borderless table-sm">
-                            <tbody>
-                                <tr>
-                                    <td width="20%" class="font-weight-bold">Invoice</td>
-                                    <td width="1%">:</td>
-                                    <td width="29%"><span id="va"></span></td>
-                                    <input type="hidden" name="va_hide" id="va_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Virtual Account</td>
-                                    <td>:</td>
-                                    <td><span id="va"></span></td>
-                                    <input type="hidden" name="va_hide" id="va_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Pembayaran</td>
-                                    <td>:</td>
-                                    <td><span id="pembayaran2"></span></td>
-                                    <input type="hidden" name="pembayaran2_hide" id="pembayaran2_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Batas Pembayaran</td>
-                                    <td>:</td>
-                                    <td><span id="batas_pembayaran"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-                <div style="padding-left: 60px;" class="center">
-                    <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
                     </div>
                 </div>
             </div>

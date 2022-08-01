@@ -60,6 +60,7 @@
                                                 <th>Harga</th>
                                                 <th>Tanggal Pembelian</th>
                                                 <th>Status</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -144,6 +145,9 @@
                 {
                     'data': 'status_transaksi'
                 },
+                {
+                    'data': 'aksi'
+                },
             ],
 
 
@@ -164,6 +168,10 @@
             console.log(invoice);
         });
     });
+
+    function detail(invoice) {
+        window.location.href = BASE_URL + 'invoice/detail/' + invoice;
+    }
 
     function check() {
         var invoice = $('#invoice').val();

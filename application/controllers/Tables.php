@@ -62,10 +62,9 @@ class Tables extends CI_Controller
 
                     $l->no = $no;
                     $l->produk = $title . " ($diamond)";
-                    // $l->aksi = "
-                    // 	<a href='javascript:void(0)' class='btn btn-info btn-xs block' title='Detail Anggota' onclick='detail(" . $l->id_transaksi    . ")'>
-                    // 	<i class='fa fa-eye'></i> Detail
-                    // 	</a>";
+                    $l->aksi = '<a href="' . base_url('invoice/detail/' . $l->invoice . '') . '" class="btn btn-info btn-xs block" title="Detail Invoice">
+                     Detail
+                    </a>';
 
                     $data[] = $l;
                 }
