@@ -22,9 +22,23 @@ class Dashboard extends CI_Controller
     public function index()
     {
 
+        $dbpengunjung = $this->db->query("SELECT COUNT(hits) as hits FROM visitor")->row();
+
+        $totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
+
+        $total_registrasi = $this->db->query('SELECT COUNT(id_user) as total FROM users WHERE role_id = "2"')->row();
+
+        $total_transaksi = $this->db->query('SELECT COUNT(id_transaksi) as total_transaksi FROM t_transaksi')->row();
+
+        $total_pendapatan = $this->db->query('SELECT SUM(harga) as total_pendapatan FROM t_transaksi WHERE status_transaksi = "Transaksi Berhasil"')->row();
+
         $data = array(
-            'isi'   => 'admin/dashboard',
-            'title'    => 'Dashboard'
+            'isi'              => 'admin/dashboard',
+            'title'            => 'Dashboard',
+            'total_pengunjung' => $totalpengunjung,
+            'total_transaksi'  => $total_transaksi->total_transaksi,
+            'total_pendapatan' => $total_pendapatan->total_pendapatan,
+            'total_registrasi' => $total_registrasi->total
         );
         $this->load->view('templates_admin/wrapper', $data);
     }

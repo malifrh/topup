@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-header" style="aspect-ratio: 5/3; background:<? @$url ?>"></div>
+                        <img src="<?= @$url ?>" style="height: 300px;" alt="">
                         <div class="card-body">
                             <h4 class="text-title"><?= @$title; ?></h4>
                             <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius tempora totam atque

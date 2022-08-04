@@ -58,7 +58,7 @@ class Order extends CI_Controller
         $result = array(
             'isi'   => 'user/detail',
             'data'  => $data['data']['denominations'],
-            // 'url'   => $data['data']['service']['url_image'],
+            'url'   => $datas->url_image,
             'payment' => $getPayment,
             'slug'  => $slug,
             'title' => $title
