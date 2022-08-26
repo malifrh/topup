@@ -149,7 +149,6 @@
                         </form>
                         <div class="card-footer">
                             <button class="btn my-btn-primary" onclick="submitForm()">Beli Sekarang</button>
-                            <!-- <button class="btn my-btn-primary" onclick="testModal()">Beli Sekarang</button> -->
                         </div>
                     </div>
                 </div>
@@ -194,25 +193,25 @@
                             $('#payment1').prop('disabled', true);
                             $('#payment2').prop('disabled', true);
                             $('#payment3').prop('disabled', true);
-                            $('#payment4').prop('disabled', true);
+                            // $('#payment4').prop('disabled', true);
 
                             $('#payment0').prop('checked', false);
                             $('#payment1').prop('checked', false);
                             $('#payment2').prop('checked', false);
                             $('#payment3').prop('checked', false);
-                            $('#payment4').prop('checked', false);
+                            // $('#payment4').prop('checked', false);
 
                             $('#labelPayment0').attr('style', 'background-color: rgb(208 208 208)');
                             $('#labelPayment1').attr('style', 'background-color: rgb(208 208 208)');
                             $('#labelPayment2').attr('style', 'background-color: rgb(208 208 208)');
                             $('#labelPayment3').attr('style', 'background-color: rgb(208 208 208)');
-                            $('#labelPayment4').attr('style', 'background-color: rgb(208 208 208)');
+                            // $('#labelPayment4').attr('style', 'background-color: rgb(208 208 208)');
 
                             $('#imagePayment0').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
                             $('#imagePayment1').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
                             $('#imagePayment2').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
                             $('#imagePayment3').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
-                            $('#imagePayment4').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
+                            // $('#imagePayment4').attr('style', '-webkit-filter: grayscale(100%);height: 75px; width:95%;');
 
 
                             $('#hargaCheck0').html('');
@@ -268,7 +267,7 @@
         var pembayaran = $('#pembayaran_hide').val();
         console.log(pembayaran);
 
-        if (pembayaran == 'bca' || pembayaran == 'bni' || pembayaran == 'bri') {
+        if (pembayaran == 'bni' || pembayaran == 'bri') {
             var invoice = $('#invoiceVA_hide').val();
 
         } else if (pembayaran == 'mandiri') {
@@ -277,23 +276,11 @@
         } else if (pembayaran == 'permata') {
             var invoice = $('#invoiceVA_hide').val();
 
-        } else if (pembayaran == 'alfamart' || pembayaran == 'indomaret') {
-            var invoice = $('#invoiceConv_hide').val();
-
         } else if (pembayaran == 'gopay') {
             var invoice = $('#invoiceQR_hide').val();
-        } else if (pembayaran == 'shopeepay') {
-            var invoice = $('#invoiceShopee_hide').val();
         }
 
         window.location.href = BASE_URL + 'invoice/detail/' + invoice;
-    }
-
-    function bayarShopee() {
-
-        var link = $('#link_shopee').val();
-
-        window.location.href = link;
     }
 
     function lanjut() {
@@ -315,7 +302,6 @@
             url: '<?= base_url() ?>/order/proses',
             type: 'POST',
             data: {
-                token_id: Veritrans.client_key,
                 pembayaran: pembayaran,
                 harga: harga,
                 game: game,
@@ -337,7 +323,7 @@
                 // Update the count down every 1 second
 
 
-                if (parse.type_payment == 'bca' || parse.type_payment == 'bri' || parse.type_payment == 'bni') {
+                if (parse.type_payment == 'bri' || parse.type_payment == 'bni') {
                     va_number = parse.va_numbers[0].va_number
                     $('#modal_bayar').modal('show');
                     $('#va').html(va_number);
@@ -438,13 +424,14 @@
                             document.getElementById("batas_pembayaranBill").innerHTML = "Status: Gagal Pembayaran";
                         }
                     }, 1000);
-                } else if (parse.type_payment == 'shopeepay') {
-                    $('#modal_shopee').modal('show');
-                    $('#link_shopee').val(parse.actions[0].url);
-                    $('#pembayaran2s').html(parse.type_payment.toUpperCase());
-                    $('#pembayaran2s_hide').val(parse.type_payment);
-                    $('#invoiceShopee').html(parse.invoice);
-                    $('#invoiceShopee_hide').val(parse.invoice);
+                } else if (parse.type_payment == 'gopay') {
+                    $('#modal_gopay').modal('show');
+                    $('#url_gopay').attr('href', parse.actions[0].url);
+                    $('#gopay_code').attr('src', parse.actions[0].url);
+                    $('#pembayaranGopay').html(parse.type_payment.toUpperCase());
+                    $('#pembayaranGopay_hide').val(parse.type_payment);
+                    $('#invoiceGopay').html(parse.invoice);
+                    $('#invoiceGopay_hide').val(parse.invoice);
                     var x = setInterval(function() {
 
                         // Get today's date and time
@@ -460,21 +447,22 @@
                         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                         // nampilin counting down
-                        document.getElementById("batas_pembayaranShopee").innerHTML = hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
+                        document.getElementById("batas_pembayaranGopay").innerHTML = hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
 
                         // jika counting down abis reload ke url(ordercancel)
                         if (distance < 0) {
                             clearInterval(x);
-                            document.getElementById("batas_pembayaranShopee").innerHTML = "Status: Gagal Pembayaran";
+                            document.getElementById("batas_pembayaranGopay").innerHTML = "Status: Gagal Pembayaran";
                         }
                     }, 1000);
                     console.log(parse.type_payment);
-                } else if (parse.type_payment == 'gopay') {
+                } else {
+                    va_number = parse.payment_code;
                     $('#modal_qr').modal('show');
                     $('#url').attr('href', parse.actions[0].url);
                     $('#qr_code').attr('src', parse.actions[0].url);
-                    $('#pembayaran2s').html(parse.type_payment.toUpperCase());
-                    $('#pembayaran2s_hide').val(parse.type_payment);
+                    $('#pembayaranQR').html(parse.type_payment.toUpperCase());
+                    $('#pembayaranQR_hide').val(parse.type_payment);
                     $('#invoiceQR').html(parse.invoice);
                     $('#invoiceQR_hide').val(parse.invoice);
                     var x = setInterval(function() {
@@ -498,39 +486,6 @@
                         if (distance < 0) {
                             clearInterval(x);
                             document.getElementById("batas_pembayaranQR").innerHTML = "Status: Gagal Pembayaran";
-                        }
-                    }, 1000);
-                    console.log(parse.type_payment);
-                } else {
-                    va_number = parse.payment_code;
-                    $('#modal_conv').modal('show');
-                    $('#kode_pay').html(va_number);
-                    $('#kode_pay_hide').val(va_number);
-                    $('#pembayaran4').html(parse.type_payment.toUpperCase());
-                    $('#pembayaran4_hide').val(parse.type_payment);
-                    $('#invoiceConv').html(parse.invoice);
-                    $('#invoiceConv_hide').val(parse.invoice);
-                    var x = setInterval(function() {
-
-                        // Get today's date and time
-                        var now = new Date().getTime();
-
-                        // Find the distance between now and the count down date
-                        var distance = countDownDate - now;
-
-                        // Time calculations for days, hours, minutes and seconds
-                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                        // nampilin counting down
-                        document.getElementById("batas_pembayaranConv").innerHTML = hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
-
-                        // jika counting down abis reload ke url(ordercancel)
-                        if (distance < 0) {
-                            clearInterval(x);
-                            document.getElementById("batas_pembayaranConv").innerHTML = "Status: Gagal Pembayaran";
                         }
                     }, 1000);
                     console.log(parse.type_payment);

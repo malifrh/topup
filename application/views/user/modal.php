@@ -165,58 +165,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal_conv" name="modal_conv" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-    <div class="modal-dialog modal-xxxl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCreate">Info Pembayaran</h5>
-                <button type="button" class="close" data-dismiss="modal" onclick="detail()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="container">
-                <div class="modal-body">
-                    <form method="post" id="formbayar" action="#">
-                        <table class="table table-borderless table-sm">
-                            <tbody>
-                                <tr>
-                                    <td width="20%" class="font-weight-bold">Invoice</td>
-                                    <td width="1%">:</td>
-                                    <td width="29%"><span id="invoiceConv"></span></td>
-                                    <input type="hidden" name="invoiceConv_hide" id="invoiceConv_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Kode Pembayaran</td>
-                                    <td>:</td>
-                                    <td><span id="kode_pay"></span></td>
-                                    <input type="hidden" name="kode_pay_hide" id="kode_pay_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Pembayaran</td>
-                                    <td>:</td>
-                                    <td><span id="pembayaran4"></span></td>
-                                    <input type="hidden" name="pembayaran4_hide" id="pembayaran4_hide">
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">Batas Pembayaran</td>
-                                    <td>:</td>
-                                    <td><span id="batas_pembayaranConv"></span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
-                <div style="padding-left: 60px;" class="center">
-                    <div class="modal-footer" id="btn_footer">
-                        <button type="button" class="btn btn-warning" onclick="detail()" data-dismiss="modal">Tutup</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="modal_qr" name="modal_qr" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
@@ -241,8 +189,8 @@
                                 <tr>
                                     <td class="font-weight-bold">Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="pembayaran2s"></span></td>
-                                    <input type="hidden" name="pembayaran2ss_hide" id="pembayaran2ss_hide">
+                                    <td><span id="pembayaranQR"></span></td>
+                                    <input type="hidden" name="pembayaranQR_hide" id="pembayaranQR_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
@@ -255,7 +203,7 @@
                             <span class="font-weight-bold text-center">Silahkan Scan QR</span>
                         </div>
                         <div style="border-radius:2px;display:flex;flex-direction:column;align-items:center;background:white">
-                            <a href="" id="url" target="_blank" alt="QR CODE GOPAY">
+                            <a href="" id="url" target="_blank" alt="QR CODE QRIS">
                                 <img src="" style="width: 100%; height:50%;" id="qr_code" name="qr_code" alt="">
                             </a>
                         </div>
@@ -272,7 +220,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal_shopee" name="modal_shopee" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+<div class="modal fade" id="modal_gopay" name="modal_gopay" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
     <div class="modal-dialog modal-xxxl">
         <div class="modal-content">
             <div class="modal-header">
@@ -290,26 +238,29 @@
                                 <tr>
                                     <td width="20%" class="font-weight-bold">Invoice</td>
                                     <td width="1%">:</td>
-                                    <td width="29%"><span id="invoiceShopee"></span></td>
-                                    <input type="hidden" name="invoiceShopee_hide" id="invoiceShopee_hide">
+                                    <td width="29%"><span id="invoiceGopay"></span></td>
+                                    <input type="hidden" name="invoiceGopay_hide" id="invoiceGopay_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="pembayaran2s"></span></td>
-                                    <input type="hidden" name="pembayaran2s_hide" id="pembayaran2s_hide">
+                                    <td><span id="pembayaranGopay"></span></td>
+                                    <input type="hidden" name="pembayaranGopay_hide" id="pembayaranGopay_hide">
                                 </tr>
                                 <tr>
                                     <td class="font-weight-bold">Batas Pembayaran</td>
                                     <td>:</td>
-                                    <td><span id="batas_pembayaranShopee"></span></td>
+                                    <td><span id="batas_pembayaranGopay"></span></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <br>
-                        <div class="row">
-                            <input type="hidden" name="link_shopee" id="link_shopee">
-                            <button type="button" class="btn btn-primary" onclick="bayarShopee()" data-dismiss="modal">Bayar dengan ShopeePay</button>
+                        <div class="qr-code">
+                            <span class="font-weight-bold text-center">Silahkan Scan QR</span>
+                        </div>
+                        <div style="border-radius:2px;display:flex;flex-direction:column;align-items:center;background:white">
+                            <a href="" id="url_gopay" target="_blank" alt="QR CODE GOPAY">
+                                <img src="" style="width: 100%; height:50%;" id="gopay_code" name="gopay_code" alt="">
+                            </a>
                         </div>
 
                     </form>

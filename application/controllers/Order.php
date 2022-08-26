@@ -8,7 +8,7 @@ class Order extends CI_Controller
     {
         parent::__construct();
         $this->authorization       = "Authorization: Bearer 152|CcZyE71bF6FeMgoQRWfLcDvHxQ6lsgBjjqCcypGE";
-        $params = array('server_key' => 'SB-Mid-server-61XKaDk0t_7L4SobiTKTOa_O', 'production' => false);
+        $params = array('server_key' => 'SB-Mid-server-dyT-ryGH1MDVgI79u6lD6aG6', 'production' => false);
         $this->load->library('veritrans');
         $this->veritrans->config($params);
     }
@@ -97,7 +97,7 @@ class Order extends CI_Controller
             'phone'                     => @$contact,
         );
 
-        if ($pembayaran == 'bca' || $pembayaran == 'bni' || $pembayaran == 'bri') {
+        if ($pembayaran == 'bni' || $pembayaran == 'bri') {
             $payment_type = 'bank_transfer';
             $transaction_data = array(
                 'payment_type'      => $payment_type,
@@ -140,41 +140,6 @@ class Order extends CI_Controller
                     'unit' => 'minute'
                 )
             );
-        } else if ($pembayaran == 'alfamart') {
-            $payment_type = 'cstore';
-            $transaction_data = array(
-                'payment_type'      => $payment_type,
-                'transaction_details'   => $transaction_details,
-                $payment_type       => array(
-                    'store'    => $pembayaran,
-                    'message'  => 'Message',
-                    'alfamart_free_text_1' => '1st row of receipt,',
-                    'alfamart_free_text_2' => 'This is the 2nd row,',
-                    'alfamart_free_text_3' => '3rd row. The end.'
-                ),
-                'customer_details'      => $customer_details,
-                'custom_expiry' => array(
-                    'order_time' => $order_time,
-                    'expiry_duration' => 60,
-                    'unit' => 'minute'
-                )
-            );
-        } else if ($pembayaran == 'indomaret') {
-            $payment_type = 'cstore';
-            $transaction_data = array(
-                'payment_type'      => $payment_type,
-                'transaction_details'   => $transaction_details,
-                $payment_type       => array(
-                    'store'    => $pembayaran,
-                    'message'  => 'Message',
-                ),
-                'customer_details'      => $customer_details,
-                'custom_expiry' => array(
-                    'order_time' => $order_time,
-                    'expiry_duration' => 60,
-                    'unit' => 'minute'
-                )
-            );
         } else if ($pembayaran == 'gopay') {
             $payment_type = $pembayaran;
             $transaction_data = array(
@@ -198,20 +163,23 @@ class Order extends CI_Controller
                     'expiry_duration' => 60,
                     'unit' => 'minute'
                 ),
-                'shopeepay' => array(
-                    'callback_url' => 'https://midtrans.com/'
-                )
             );
         }
 
-        $params = array('server_key' => 'SB-Mid-server-61XKaDk0t_7L4SobiTKTOa_O', 'production' => false);
+        // var_dump($transaction_data);
+        // die;
+
+        $params = array('server_key' => 'SB-Mid-server-dyT-ryGH1MDVgI79u6lD6aG6', 'production' => false);
         $this->load->library('veritrans', $params);
         $response = null;
         try {
             $response = $this->veritrans->vtdirect_charge($transaction_data);
         } catch (Exception $e) {
             echo $e->getMessage();
+            // var_dump($e->getMessage());
         }
+        // var_dump($response);
+        // die();
 
         if ($response) {
             if ($response->transaction_status == "capture") {
@@ -234,7 +202,7 @@ class Order extends CI_Controller
             $va_number = $response->va_numbers[0]->va_number;
         }
 
-        if ($payment_type == 'gopay') {
+        if ($payment_type == 'gopay' || $payment_type == 'qris') {
             $gopayRedirect = @$response->actions[0]->url;
         }
 
@@ -319,7 +287,7 @@ class Order extends CI_Controller
         $datas = json_decode($responses, true);
 
         if ($slug == 'mobile-legend') {
-            if ($datas['result'] != '') {
+            if ($datas['code'] != 204) {
                 $result['harga'] = $data['data']['denominations'][$key]['price'];
                 $result['game'] = $slug;
                 $result['username'] = $datas['result'];
@@ -330,7 +298,7 @@ class Order extends CI_Controller
                 $status = false;
             }
         } else {
-            if ($result) {
+            if ($datas['code'] != 204) {
                 $result['harga'] = $data['data']['denominations'][$key]['price'];
                 $result['game'] = $slug;
                 $result['username'] = $datas['result'];

@@ -10,7 +10,7 @@
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <div class="my-img-carousel"><a target="_blank" rel="noopener noreferrer" href="">
-                                            <img class="img-fluid" style="width:85% !important; " src="">
+                                            <img class="img-fluid" style="width:100% !important; " src="<?= base_url('assets/img/banner.jpg') ?>">
                                         </a></div>
                                 </div>
                             </div>
